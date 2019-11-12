@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+    {% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}标题{% endblock %}</title>
+    <link href="css/css.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+{% block context %}
+    <div class="form-group">
+            <input type="text" class="form-control" id="name"
+          placeholder="请输入用户名" ng-model="username">
+    </div>
+    <div class="form-group">
+            <input type="passwd" class="form-control" id="name"
+          placeholder="请输入密码" ng-model="password">
+    </div>
+<button type="button" class="btn btn-primary" ng-click="my_submit()">保存</button>
+    <p class="text-danger">[[ result ]]</p>
+    {{ block.super }}
+
+    <h1>
+    {{ current_datetime }}
+    </h1>
+
+    <div id="tarticle">
+        在{{ current_datetime }}
+    </div>
+
+    <div>
+         {% include 'latest_books.html' %}
+    </div>
+现在的时间是：<h1>{{ current_datetime }}</h1>
+
+<div class="one">使用数据库</div>
+<div style="margin-top: 20px">
+            <table width="100%" border="0" cellspacing="1" class="tab">
+
+                <tr>
+                    <th width="4%"></th>
+                    <th width="4%">文章编号</th>
+                    <th width="8%">标题</th>
+                    <th width="6%">栏目编号</th>
+                    <th width="10%">名字</th>
+                </tr>
+
+                {% for art in tarticle %}
+                    <tr >
+                        <td align="center"></td>
+                        <td align="center">{{ art.0 }}</td>
+                        <td align="center">{{ art.1 }}</td>
+                        <td align="center">{{ art.2 }}</td>
+                        <td align="center">{{ art.14 }}</td>
+                    </tr>
+                {% endfor %}
+
+
+
+            </table>
+</div>
+
+<form method="get" action="polls">
+
+<input type="text" data-model-name="one">
+</form>
+
+    {{ one }}
+<br>
+<br>
+<br>
+{% endblock %}
+
+
+    {% for i in all %}
+        <li>id:{{ i.id }}</li>
+        <li>name:{{ i.name }}</li>
+        <li>address:{{ i.address }}</li>
+        <li>city:{{ i.city }}</li>
+        <li>state_provice:{{ i.state_provice }}</li>
+        <li>country:{{ i.country }}</li>
+        <li>website:{{ i.website }}</li>
+    {% endfor %}
+
+
+</body>
+</html>
