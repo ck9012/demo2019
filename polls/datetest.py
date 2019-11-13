@@ -1,4 +1,5 @@
 import calendar
+import functools
 import time
 
 # localtime=time.asctime(time.localtime(time.time()))
@@ -14,5 +15,17 @@ import time
 # a = "Sat Mar 28 22:24:24 2016"
 # print(time.mktime(time.strptime(a, "%a %b %d %H:%M:%S %Y")))
 
-cal=calendar.month(2019,11)
-print(cal)
+# cal=calendar.month(2019,11)
+# print(cal)
+
+# 作用于任何函数上，并打印该函数的执行时间.具体怎么用不知道
+# def metric(fn):
+#     @functools.wraps(fn)
+#     def wrapper(*args,**kw):
+#         time0=time.time()
+#         ret=fn(*args,**kw)
+#         time1=time.time()
+#         print('%s executed in ms '% (fn.__name__,time1-time0))
+#         return ret
+#     return wrapper()
+

@@ -5,9 +5,44 @@
     <meta charset="UTF-8">
     <title>{% block title %}标题{% endblock %}</title>
     <link href="css/css.css">
+{% block js %}
+<script type="text/javascript"></script>
+<script type="text/javascript">
+
+    //显示当前时间
+	function getTime() {
+		//创建星期数组，必须按照顺序，星期日是一周中的第一天
+		var week=new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+		//创建日期函数的对象
+		var date=new Date();
+		var y=date.getFullYear();
+		var m=date.getMonth()+1;
+		var d=date.getDate();
+		var h=date.getHours();
+		var min=date.getMinutes();
+		var s=date.getSeconds();
+		//获取一周中的第 天-1
+		//var day=date.getDay();
+		//alert(day);
+		if (min<10) {
+			min="0"+min;
+		}
+		if (s<10) {
+			s="0"+s;
+		}
+		//时间写入div
+		document.getElementById("time99").innerHTML=y+"年"+m+"月"+d+"日"+"	"+week[date.getDay()]+"	"+h+":"+min+":"+s;
+
+	}
+	//每隔一秒调用一次方法
+	window.setInterval(getTime,1000);
+</script>
+
+{% endblock %}
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
 {% block context %}
+    <h3 id="time99"></h3>
     <div class="form-group">
             <input type="text" class="form-control" id="name"
           placeholder="请输入用户名" ng-model="username">
@@ -31,7 +66,7 @@
     <div>
          {% include 'latest_books.html' %}
     </div>
-现在的时间是：<h1>{{ current_datetime }}</h1>
+现在的时间是：<h1 id="time">{{ current_datetime }}</h1>
 
 <div class="one">使用数据库</div>
 <div style="margin-top: 20px">

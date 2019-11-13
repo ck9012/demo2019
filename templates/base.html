@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title%}标题{% endblock %}</title>
+{% block js %}
+{% endblock %}
 </head>
 <body>
 {#这是模板#}
 {% block context%}内容{% endblock %}
 
 {% block footer%}
-<div>到底了</div>
+<div id="time99">到底了</div>
 {% endblock %}
 </body>
 </html>
